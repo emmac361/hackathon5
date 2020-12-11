@@ -1,3 +1,38 @@
+#this is the PCR lyticase lysis buffer part
+
+from opentrons import simulate
+metadata = {'apiLevel': '2.0'}
+protocol = simulate.get_protocol_api('2.0')
+#Labware
+plate = protocol.load_labware('corning_96_wellplate_360ul_flat', 1)
+tiprack_1 = protocol.load_labware('opentrons_96_tiprack_300ul', 2)
+#pipettes
+p300 = protocol.load_instrument('p300_single_gen2', 'right', tip_racks=[tiprack_1])
+protocol.max_speeds['Z'] = 10
+
+#commands
+p300.transfer(50, plate['A1'], plate['C1'])
+p300.transfer(5, plate['B1'], plate['C1'])
+
+p300.transfer(55, plate['C1'], plate['D1'], touch_tip=True, blow_out=True, new_tip='always') 
+p300.pick_up_tip()
+
+
+#mix(repetitions, volume, location, rate)
+p300.mix(5, 55, plate['D1'], 0.5)
+p300.return_tip()
+
+#first incubation time(37˙C for 30 minutes)
+#second incubation time(95˙C for 10 minutes)
+protocol.delay(minutes=40)   
+
+p300.transfer(5, plate['D1'], plate['A2'])
+
+#pause for 5 minutes to prepare for PCR/thermocycler reaction
+protocol.delay(minutes=5)           
+    
+for line in protocol.commands(): 
+        print(line)
 
 
 #this is the thermocycler bit. 
