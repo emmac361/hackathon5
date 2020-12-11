@@ -22,6 +22,7 @@ p300.pick_up_tip()
 p300.mix(5, 55, plate['D1'], 0.5)
 p300.return_tip()
 
+#thermocycler part/or use temperature module
 #first incubation time(37˙C for 30 minutes)
 #second incubation time(95˙C for 10 minutes)
 protocol.delay(minutes=40)   
