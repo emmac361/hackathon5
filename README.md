@@ -1,4 +1,4 @@
-    #this is the PCR lyticase lysis buffer part (Emma/Eleanor)
+    #this is the PCR lyticase lysis buffer part 
 
     from opentrons import simulate
     metadata = {'apiLevel': '2.0'}
@@ -35,7 +35,7 @@
     for line in protocol.commands(): 
         print(line)
 
-    #this is the PCR reaction(Arman/George/James)
+    #this is the PCR reaction
     def get_values(*names):
     import json
     _all_values = json.loads("""{"number_of_samples":96,"dna_volume":13.4,"mastermix_volume":4.6,"master_mix_csv":"Reagent,Well,Volume\\nBuffer,A2,3\\nMgCl,A3,40\\ndNTPs,A2,90\\nWater,A3,248\\nprimer 1,A4,25\\nprimer 2,A5,25\\n","tuberack_type":"opentrons_24_aluminumblock_nest_1.5ml_screwcap","single_channel_type":"p1000_single_gen2","single_channel_mount":"right","pipette_2_type":"p1000_single_gen2","pipette_2_mount":"left","lid_temp":105,"init_temp":96,"init_time":30,"d_temp":96,"d_time":15,"a_temp":60,"a_time":30,"e_temp":74,"e_time":30,"no_cycles":30,"fe_temp":74,"fe_time":30,"final_temp":4}""")
@@ -227,7 +227,7 @@
     runlog, _bundle = simulate(protocol_file)
     print(format_runlog(runlog))
 
-    #this is the thermocycler bit(James)
+    #this is the thermocycler bit
 
 
     def get_values(*names):
