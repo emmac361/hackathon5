@@ -227,16 +227,16 @@
     runlog, _bundle = simulate(protocol_file)
     print(format_runlog(runlog))
 
-#this is the thermocycler bit(James)
+    #this is the thermocycler bit(James)
 
 
-def get_values(*names):
+    def get_values(*names):
     import json
     _all_values = json.loads("""{"well_vol":50,"lid_temp":110,"init_temp":4,"init_temp1":98,"init_time1":30,"init_time":300, "d_temp":98,"d_time":10,"a_temp":60,"a_time":20,"e_temp":72,"e_time":60,"no_cycles":8,"d_temp1":98,"d_time1":10,"a_temp1":52.4,"a_time1":20,"e_temp1":72,"e_time1":90,"no_cycles1":25,"fe_temp":72,"fe_time":600,"final_temp":4}""")
     return [_all_values[n] for n in names]
 
 
-metadata = {
+    metadata = {
     'protocolName': 'Thermocycler Example Protocol',
     'author': 'Opentrons <protocols@opentrons.com>',
     'source': 'Protocol Library',
@@ -244,7 +244,7 @@ metadata = {
     }
 
 
-def run(protocol):
+    def run(protocol):
     [well_vol, lid_temp, init_temp, init_time,
         d_temp, d_time, a_temp, a_time,
         e_temp, e_time, no_cycles,
